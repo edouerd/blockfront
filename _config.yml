@@ -1,1 +1,7 @@
-theme: jekyll-theme-minimal
+# Site settings
+title: Blockfront
+version: "v1"
+description: "Blockfront is a decentralized intelligence layer for the Ethereum blockchain ecosystem."
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://edouerd.github.io/blockstack/"
+# url: "http://labs.edouard.us" # the base hostname & protocol for your site

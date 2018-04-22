@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+
+  {% include head.html %}
+
+  <body class="mw8 center">
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        {% include header-post.html %}
+        <section class="post-content georgia lh-title measure" itemprop="articleBody">
+            {{ content }}
+        </section>
+    </article>
+  </body>
+
+</html>

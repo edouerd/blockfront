@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <title>Ethereum Nodes Aren’t Magic Databases</title>
+    <meta name="description" content="Introduction">
+  
+    <link rel="canonical" href="https://edouerd.github.io/blockstack//jekyll/update/2015/11/17/testing2.html">
+    <link rel="alternate" type="application/rss+xml" title="Blockfront" href="https://edouerd.github.io/blockstack//feed.xml">
+    <link rel="shortcut icon" type="image/png" href="images/favicon.ico"/>
+  
+    <!-- Styles -->
+    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.9.1/css/tachyons.min.css"/>
+    <style>
+    body {
+        font-family: sans-serif;
+        font-size: 2em;
+    }
+    .bw1-5 {border-width: .16rem;}
+    .elong {
+        transform: scale(1,1.2);
+        -webkit-transform: scale(1,1.2);
+    }
+    </style>
+    <!-- JS -->
+
+</head>
+
+  <body class="mw8 center">
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="bb bw1-5 cf">
+    <p class="fl w-50 post-title" itemprop="name headline">
+        Ethereum Nodes Aren’t Magic Databases
+    </p>
+    <p class="fl w-50 post-meta">
+        <time datetime="2015-11-17T17:16:01-05:00" itemprop="datePublished">
+            Nov 17, 2015
+        </time>
+        
+    </p>
+</div>
+        <section class="post-content georgia lh-title measure" itemprop="articleBody">
+            <h3 id="introduction">Introduction</h3>
+
+<p>Most discussions about the computing resources necessary to run an Ethereum node focus on fast, minimal nodes optimized for the verification and execution of transactions. In a helpful article titled The Ethereum-blockchain size will not exceed 1TB anytime soon, Parity developer Rando details the different types of Parity configurations, and notes that syncing a ‘full’ node only required about 26GB of disk space in December 2017. By ‘full’ Rando means ‘fully verified’, sufficient for transaction-focused use cases.</p>
+
+<p>But a lot of excitement around Ethereum is based on the possibility of Ethereum-backed distributed applications (DApps) that use the Ethereum network as a decentralized computational and storage resource. In the DApp architecture, Ethereum nodes are envisioned as a robust state container, capable of acting as a query-able “source of truth” for a variety of on-chain data. For this type of use case, a ‘full’ node alone is not sufficient, because it is necessary not only to verify transactions but also to verify computation that takes place on the Ethereum Virtual Machine (EVM) and efficiently access past contract states. In order to satisfy these requirements, the node must be further configured with feature flags, specific hardware, and an order of magnitude more disk space.</p>
+
+<p>In the process of building a distributed application, we gained a better understanding of the weaknesses and strengths of current Ethereum node implementations when evaluated in terms of query performance and availability.</p>
+
+<h3 id="our-use-case">Our Use Case</h3>
+
+<p>We set out to build a decentralized block explorer after we became frustrated with outages of services like etherscan and ethplorer. While these block explorers provide a number of invaluable features such as contract source code verification, token tracking, APIs, and account lookups, we were concerned that these services could become a single point of failure. Also, it seemed like an interesting challenge to try to build these features in a decentralized manner, especially since much of the data (for example, token and account data) can be obtained directly from an ethereum node.</p>
+
+<p>We started out trying to see how far we could get by directly making queries to an Ethereum node running in the cloud. We wanted to identify the different query types supported by the RPC interface, and what query types would require a secondary data store.</p>
+
+<p>It quickly became apparent that different node configurations would allow for different types of queries. It also became apparent that long-running queries would make the node unavailable for other users unless the node was configured with multi-threaded RPC.</p>
+
+<p>Initially, we imagined nodes as a ‘magic’ pluggable component of a uniform distributed resource. A user could simply enter the address of a public node, or a node on their machine. But our observations challenged this idea: not all nodes are equal.</p>
+
+<p>We ended up hosting our own node for two reasons:</p>
+
+<p>We wanted to configure our node to satisfy the widest variety of possible queries
+We wanted to be able to analyze the performance of our workload and troubleshoot long-running queries</p>
+
+<p>By building our application against an optimally configured node we can provide the best experience in an optimal scenario, and also design the application progressively to remove features in a non-optimal scenario.</p>
+
+<p>By analyzing the performance of our node, we can recommend a hardware configuration for any node with a similar, query-oriented archival configuration.</p>
+
+        </section>
+    </article>
+  </body>
+
+</html>
