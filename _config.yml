@@ -3,5 +3,5 @@ title: Blockfront
 version: "v1"
 description: "Blockfront is a decentralized intelligence layer for the Ethereum blockchain ecosystem."
 baseurl: ""
-url: "edouerd.github.io"
+url: "edouerd.github.io/blockfront"
 permalink: /:title
