@@ -2,5 +2,5 @@
 title: Blockfront
 version: "v1"
 description: "Blockfront is a decentralized intelligence layer for the Ethereum blockchain ecosystem."
-baseurl: "/blockfront" # the subpath of your site, e.g. /blog
-url: "/" # the base hostname & protocol for your site
+# baseurl: "/" # the subpath of your site, e.g. /blog
+# url: "/" # the base hostname & protocol for your site
