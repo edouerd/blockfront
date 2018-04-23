@@ -1,4 +1,4 @@
-Blockstack Site
+Blockfront Site
 
 —
 
